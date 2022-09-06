@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import { publicRoutes } from './routes/routes';
-import mainLayout from './components/layout/mainLayout';
+import MainLayout from './components/layout/mainLayout';
 function App() {
   return (
     <Router>
@@ -14,9 +14,9 @@ function App() {
                 key={index}
                 path={route.path}
                 element={
-                  <mainLayout>
+                  <MainLayout>
                     <Page />
-                  </mainLayout>
+                  </MainLayout>
                 }
               />
             );
