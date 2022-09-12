@@ -1,5 +1,5 @@
 import React from 'react';
-// import ExampleComponent from './Captcha';
+import ReCAPTCHA from 'react-google-recaptcha';
 import './form.scss';
 function Form() {
   return (
@@ -22,10 +22,15 @@ function Form() {
             <input type="text" />
           </div>
         </div>
+        <ReCAPTCHA className="captcha"
+          size="normal"
+          data-theme="dark"
+          render="explicit"
+          sitekey="6LcWLvIhAAAAAH6V9xminkJUAyGPMIZWxaP_luPu"
+        />
         <div className="form-button">
           <button>Tra Cứu</button>
         </div>
-          {/* <ExampleComponent /> */}
       </form>
     </div>
   );
