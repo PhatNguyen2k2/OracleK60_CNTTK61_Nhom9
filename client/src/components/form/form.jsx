@@ -32,3 +32,4 @@ function Form() {
 }
 
 export default Form;
+//https://vntalking.com/tich-hop-google-recaptcha-vao-form-trong-react.html
