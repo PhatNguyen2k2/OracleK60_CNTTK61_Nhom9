@@ -1,15 +1,38 @@
+import styles from './satistics.scss';
+
+import React from 'react';
+
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+} from 'chart.js';
+
+import { Bar } from 'react-chartjs-2';
+
 function Statistics() {
-  return(
-    <div>
-      <h4>This is statistics component</h4>
-      <img
-        src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.15752-9/296162066_999828024020620_5212260318443284224_n.png?_nc_cat=103&ccb=1-7&_nc_sid=ae9488&_nc_ohc=MfkxWqHyejMAX-E5hsa&_nc_ht=scontent.fsgn2-2.fna&oh=03_AVLWsXMdJ64qo_Q6i4Q2357GdYeYDUnn7iKuXvy_b5j3eg&oe=633CBC18"
-        alt="meop"
-        width="200"
-        height="250"
-      />
-    </div>
-  );
+  <div>
+    <Bar
+      data={{
+        labels: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+        datasets: [
+          {
+            label: 'Math',
+            data: [3, 6, 2, 8, 5, 8, 7, 5, 3, 6, 9],
+            backgroundColor: 'red'
+          }
+        ]
+      }}
+      return
+      height={600}
+      width={800}
+      options={{ maintainAspectRatio: false }}
+    />
+  </div>;
 }
 
 export default Statistics;
