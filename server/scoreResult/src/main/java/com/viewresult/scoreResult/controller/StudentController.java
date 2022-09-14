@@ -3,6 +3,7 @@ package com.viewresult.scoreResult.controller;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,6 +30,15 @@ public class StudentController {
 		Optional<Student> studentData = studentRepository.findById(id);
 		if (studentData.isPresent()) {
 			return new ResponseEntity<>(studentData.get(), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+	@GetMapping("/statistics/maths")
+	@Query("Select count(SBD) From DATA Where TOÁN = 0")
+	public ResponseEntity<Long> countStudent(long doc){
+		if (doc != 0) {
+			return new ResponseEntity<>(doc, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
