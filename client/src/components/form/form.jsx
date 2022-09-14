@@ -4,9 +4,9 @@ import './form.scss';
 function Form() {
   return (
     <div className="content">
-      <form className="form-content" id="Form">
+      <form className="form-content" id="Form"  >
         <div className="form-title">
-          <h3>SỞ GIÁO DỤC VÀ ĐÀO TẠO HÀ NỘI</h3>
+          <h3>SỞ GIÁO DỤC VÀ ĐÀO TẠO THÀNH PHỐ HỒ CHÍ MINH</h3>
           <h2>TRA CỨU ĐIỂM THI THPT QUỐC GIA 2018</h2>
         </div>
         <div className="form-input">
@@ -15,26 +15,33 @@ function Form() {
           </div>
           <div className="input-group">
             <label>Số báo danh</label>
-            <input type="text" />
-          </div>
-          <div className="input-group">
-            <label>Mã Xác Nhận</label>
-            <input type="text" />
+            <input
+              type="text"
+            />
           </div>
         </div>
-        <ReCAPTCHA className="captcha"
+        <ReCAPTCHA
+          className="captcha"
           size="normal"
           data-theme="dark"
           render="explicit"
           sitekey="6LcWLvIhAAAAAH6V9xminkJUAyGPMIZWxaP_luPu"
         />
-        <div className="form-button">
-          <button>Tra Cứu</button>
+        <div className="form-button" >
+          <button id = "submit" > 
+            Tra Cứu
+          </button>
         </div>
       </form>
     </div>
   );
 }
+// function captchaHandle (){
+//   const hide = ReactDOM.querySelector('.captcha') 
+//   const sub = ReactDOM.querySelector('submit').disable = true
+//   if (onClick = {hide}){
+//     sub.disable = flase
+//   }
+// }
 
 export default Form;
-//https://vntalking.com/tich-hop-google-recaptcha-vao-form-trong-react.html
