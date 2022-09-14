@@ -6,6 +6,7 @@
   justify-content: center;
   align-items: center;
   background-color: #eaeaea;
+  margin: 0 auto;
   .form-content {
     display: flex;
     flex-direction: column;
@@ -14,9 +15,11 @@
     }
     .form-input {
       .input-group {
-        display: flex;
-        padding : 10px;
+        // display: flex;
+        // justify-content: center;
+        margin-top: 10px;
         margin-bottom: 20px;
+        margin-left: 110px;
         label {
           margin: auto;
           margin-left: 0px;
@@ -25,7 +28,7 @@
         }
         input {
           border: 0.5px solid #eaeaeaaf;
-          margin: auto;
+          margin-left: 50px;
           width: 300px;
           height: 30px;
           &:focus-visible {
@@ -35,14 +38,15 @@
       }
     }
     .captcha {
-      margin-left: 70px;
+      margin-left: 200px;
     }
     .form-button {
       display: flex;
       width: 100%;
       justify-content: center;
-      margin-top: 10px;
+      visibility: hidden;
       button {
+        margin-top: 20px;
         margin-left: -90px;
         background-color: #3b7ac2;
         padding: 7px 20px;

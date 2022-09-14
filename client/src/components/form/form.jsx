@@ -15,33 +15,25 @@ function Form() {
           </div>
           <div className="input-group">
             <label>Số báo danh</label>
-            <input
-              type="text"
-            />
+            <input type="text"/>
           </div>
         </div>
-        <ReCAPTCHA
+        <ReCAPTCHA onClick={captchaHandle}
           className="captcha"
           size="normal"
           data-theme="dark"
           render="explicit"
           sitekey="6LcWLvIhAAAAAH6V9xminkJUAyGPMIZWxaP_luPu"
         />
-        <div className="form-button" >
-          <button id = "submit" > 
-            Tra Cứu
-          </button>
+        <div className="form-button" id = "btn">
+          <button type="submit" > Tra Cứu </button>
         </div>
       </form>
     </div>
   );
 }
-// function captchaHandle (){
-//   const hide = ReactDOM.querySelector('.captcha') 
-//   const sub = ReactDOM.querySelector('submit').disable = true
-//   if (onClick = {hide}){
-//     sub.disable = flase
-//   }
-// }
+function captchaHandle (){
+  document.getElementById("btn").style.visibility = "visible";
+}
 
 export default Form;
