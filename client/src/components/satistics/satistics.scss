@@ -8,16 +8,18 @@ body {
     color:#333;
 }
 .container{
-    margin:0 auto;
-    margin:1100px;
+    width: 1100px;
+    margin: 0 auto;
 }
 .container{
-    width: 100%;
     h1{
         font-size: 30px;
         text-align: center;
     }
 }
+.Statistics{
+    text-align: center;
 #canvas{
-    width: 70%;
+    width: 100% !important;
+}
 }
