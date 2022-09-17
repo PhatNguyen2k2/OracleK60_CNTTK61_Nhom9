@@ -1,57 +1,87 @@
-.content {
-  width: 100%;
-  height: auto;
-  padding: 100px 0px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #eaeaea;
+.container{
   margin: 0 auto;
-  .form-content {
+  max-width: 1320px;
+  .content {
+    width: 100%;
+    height: auto;
+    padding: 50px 0px;
     display: flex;
-    flex-direction: column;
-    .form-title {
-      text-align: center;
-    }
-    .form-input {
-      .input-group {
-        // display: flex;
-        // justify-content: center;
-        margin-top: 10px;
-        margin-bottom: 20px;
-        margin-left: 110px;
-        label {
-          margin: auto;
-          margin-left: 0px;
-          font-weight: 6;
-          width: 100px;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin: 0 auto;
+    .form-content {
+      border: 1px solid #000000;
+      background-color: #f7f7f7;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      .form-title {
+        text-align: center;
+        #Dung {
+          padding: 20px;
+          font-size: 32px;
         }
-        input {
-          border: 0.5px solid #eaeaeaaf;
-          margin-left: 50px;
-          width: 300px;
-          height: 30px;
-          &:focus-visible {
-            outline: none;
+        #Quan {
+          padding: 10px;
+        }
+      }
+      .form-input {
+        .input-guide {
+          font-size: 17px;
+          margin-top: 10px;
+          margin-left: 210px;
+        }
+        .input-group {
+          margin-top: 10px;
+          margin-bottom: 20px;
+          margin-left: 110px;
+          label {
+            margin-left: 100px;
+          }
+          input {
+            border: 0.5px solid #eaeaeaaf;
+            padding: 2px;
+            margin-left: 40px;
+            width: 220px;
+            height: 30px;
+            &:focus-visible {
+              outline: none;
+            }
           }
         }
       }
-    }
-    .captcha {
-      margin-left: 200px;
-    }
-    .form-button {
-      display: flex;
-      width: 100%;
-      justify-content: center;
-      visibility: hidden;
-      button {
-        margin-top: 20px;
-        margin-left: -90px;
-        background-color: #3b7ac2;
-        padding: 7px 20px;
-        color: white;
-        border: none;
+      .captcha {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .form-click {
+        display: flex;
+        justify-content: center;
+  
+        .form-button {
+          margin: 10px 20px;
+          visibility: hidden;
+          button {
+            background-color: #5cb85c;
+            padding: 7px 20px;
+            color: white;
+            font-weight: 1000;
+            border: none;
+            cursor: pointer;
+          }
+        }
+        .form-next {
+          margin: 10px 0px;
+          button {
+            background-color: #5cb85c;
+            padding: 7px 20px;
+            color: white;
+            font-weight: 1000;
+            border: none;
+            cursor: pointer;
+          }
+        }
       }
     }
   }
