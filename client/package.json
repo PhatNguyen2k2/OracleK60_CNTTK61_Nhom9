@@ -29,8 +29,10 @@
   },
   "devDependencies": {
     "bootstrap-icons": "^1.9.1",
+    "chart.js": "^3.9.1",
     "classnames": "^2.3.1",
     "normalize.css": "^8.0.1",
+    "react-chartjs-2": "^4.3.1",
     "react-dom": "^18.2.0",
     "react-google-recaptcha": "^2.1.0",
     "react-router-dom": "^6.3.0",

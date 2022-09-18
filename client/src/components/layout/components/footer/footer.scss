@@ -7,27 +7,59 @@ body{
     font-size: 1.6rem;
 }
 .nav-footer{
-    background-color: #3B8BCC;
+    background-color: #6895ba;
     .container{
         max-width: 1320px;
         margin: 0 auto;
         .footer{
-            display: flex;
-            .footer-title{
-                font-size: 23px;
-                color: white;
-                line-height:50px;
-            }
-            .footer-icon{
-                list-style-type: none;
-                font-size: 17px;
-                color:white;
-                li{
-                        line-height: 30px;
+            // display: flex;
+            .footer-content{
+                width: 45%;
+                margin-top: 20px;
+                display: inline-block;
+                padding: 0px 20px;
+                // border: 2px solid yellow;
+                // float: left;
+                .footer-title{
+                    font-size: 23px;
+                    color: white;
+                    line-height:50px;
+                    // float: left;
                 }
-            
-                span{
-                    margin-left: 10px;
+                .footer-icon{
+                    list-style-type: none;
+                    font-size: 17px;
+                    color:white;
+                   
+                    li{
+                            line-height: 30px;
+                    }
+                
+                    span{
+                        margin-left: 10px;
+                    }
+                }
+                .copyright{
+                    line-height: 30px;
+                    font-size: 17px;
+                    color:white;
+                }
+            }
+            .footer-map{
+                margin-top: 30px;
+                width: 55%;
+                display: inline-block;
+                padding: 0px 20px;
+                // border: 2px solid violet;
+                // float: left;
+                iframe{
+                    width: 100%;
+                }
+            }
+            @media (max-width: 1300px) {
+                .footer-content, .footer-map{
+                    // display: block;
+                    width: 100%;
                 }
             }
         }

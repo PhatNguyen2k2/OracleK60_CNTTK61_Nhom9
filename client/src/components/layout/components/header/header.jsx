@@ -7,7 +7,7 @@
 // }
 import React from "react";
 import './header.scss';
-import logo from '../images/logo-removebg-preview (1).png';
+import logo from '../images/logo-removebg-preview__1_-removebg-preview (1).png';
 function Header(){
   return (
     <div className="nav-bg">

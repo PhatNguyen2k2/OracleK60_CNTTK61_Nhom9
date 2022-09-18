@@ -7,7 +7,7 @@ function Footer() {
       <div className="container">
         <div className="footer">
           <div className="footer-content">
-            <p className="footer-title">Sở giáo dục và đào tạo thành phố Hồ Chí Minh</p>
+            <p className="footer-title">Sở Giáo dục và Đào tạo Thành phố Hồ Chí Minh</p>
             <ul className="footer-icon">
               <li>
                 <i class="bi bi-geo-alt"></i>
@@ -15,16 +15,17 @@ function Footer() {
               </li>
               <li>
                 <i class="bi bi-telephone"></i>
-                <span>(+84) 028.38 229 360</span>
+                <span>(+84) 2838 229 360</span>
               </li>
               <li>
                 <i class="bi bi-envelope"></i>
                 <span>sgddt@tphcm.gov.vn</span>
               </li>
             </ul>
+            <p className="copyright"> &copy; 2022 Copyright OracleK60_CNTTK61_Nhom9 </p>
           </div>
           <div className="footer-map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15677.721759986493!2d106.7024947!3d10.7783075!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc33ae565cb446e66!2zU-G7nyBHacOhbyBk4bulYyAmIMSQw6BvIHThuqFvIFRow6BuaCBwaOG7kSBI4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1663394733818!5m2!1svi!2s" width="400" height="300" style={{border:0}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15677.721759986493!2d106.7024947!3d10.7783075!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc33ae565cb446e66!2zU-G7nyBHacOhbyBk4bulYyAmIMSQw6BvIHThuqFvIFRow6BuaCBwaOG7kSBI4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1663394733818!5m2!1svi!2s" style={{border:0}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
       </div>
