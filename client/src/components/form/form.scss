@@ -56,6 +56,13 @@
               outline: none;
             }
           }
+          #msg{
+            color: red;
+            font-style: italic;
+            font-size: 13px;
+            margin-left: 270px;
+            visibility: hidden;
+          }
         }
       }
       .captcha {
