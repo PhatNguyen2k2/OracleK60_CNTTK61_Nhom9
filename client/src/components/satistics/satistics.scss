@@ -80,16 +80,57 @@
         font-size: 30px;
       }
     }
+    .phodiem {
+      color: #333;
+      // border: 2px solid black;
+      padding-top: 40px;
+      padding-bottom: 0.5px;
+      font-size: 25px;
+    }
     .barchart {
       color: #4b4b4b;
       background-color: #ffffff;
       font-size: 18px;
       width: 100%;
-      height: 450px;
+      height: 550px;
       border: 1px solid rgb(194, 191, 191);
       box-shadow: 1px 2px 4px 2px rgba($color: #333, $alpha: 0.5);
-      margin-bottom: 50px;
+      margin-bottom: 30px;
+      margin-top: 10px;
     }
+  }
+  .subject {
+    a {
+      text-decoration: none;
+      // border: 2px solid pink;
+      // padding: 0.5rem 0.5rem;
+      padding: 15px;
+      transition: all 2s;
+      color: black;
+      background-color: #ffffcc;
+
+      &:hover {
+        background-color: #9acd32;
+        border-radius: 15px;
+        // transition: all .5s;
+        // transition-property: all;
+        // transition-duration: 0.5s;
+        // transition-timing-function: ease;
+      }
+    }
+    // @include xs {
+    //   font-size: 20px;
+    // }
+    // @include sm {
+    //   font-size: 15px;
+    // }
+    // @include md {
+    //   font-size: 16px;
+    // }
+    // @include lg {
+    //   font-size: 17px;
+    // }
+    // text-align: initial;
   }
 }
 // *, *::after,*::before{

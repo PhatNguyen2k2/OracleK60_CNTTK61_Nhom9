@@ -12,9 +12,10 @@ function Form() {
           </div>
           <div className="form-input">
             <div className="input-guide">
-              <p>Thí sinh nhập số báo danh và tích vào các ô dưới đây</p>
+              <p>Thí Sinh Nhập Số Báo Danh Vào Ô Dưới Đây và Tích Check</p>
             </div>
             <div className="input-group">
+              <p id="msg">Vui Lòng Nhập Số Và Đủ 7 Ký Tự </p>
               <label htmlFor="sbd">Số báo danh</label>
               <input
                 type="text"
@@ -29,7 +30,6 @@ function Form() {
                 pattern="[0-9]{7}"
                 required
               />
-               <p id="msg">Vui Lòng Nhập Số Và Đủ 7 Ký Tự </p>
             </div>
           </div>
           <ReCAPTCHA
@@ -51,7 +51,11 @@ function Form() {
               </a>
             </div>
           </div>
-          <div id="data-form"></div>
+          <div className="form-score">
+            <p id="score">Điểm các môn: </p>
+              <div id="data-form"></div>
+          </div>
+          {/* <div id="svgContainer"></div> */}
         </form>
       </div>
     </div>
@@ -73,55 +77,65 @@ function idCheck() {
   }
   return flag;
 }
+function sumscore(a, b, c) {
+  let sum = '0.0';
+  sum = (a + b + c) / 3;
+  return sum;
+}
 function captchaHandle() {
   document.getElementById('btn').style.visibility = 'visible';
   let sbd = document.querySelector('#sbd').value;
-  console.log(sbd);
   document.querySelector('.form-button').addEventListener('click', (event) => {
     if (idCheck()) {
-      fetch('https://jsonplaceholder.typicode.com/posts', { method: 'GET' })
+      document.getElementById('score').style.visibility = 'visible';
+      fetch('https://jsonplaceholder.typicode.com/users', { method: 'GET' })
         .then((response) => response.json())
         .then((posts) => {
-          let jsxs = posts.map((dung) => {
-            return
-              `<table>
-                <tr>
-                  <th colspan = "9">Bang Diem Thi THPT Quoc Gia 2022</th>
-                  </tr>
-                <tr>
-                  <td>Toan</td>
-                  <td>Ngu Van</td>
-                  <td>Ngoai Ngu</td>
-                  <td>Vat Ly</td>
-                  <td>Sinh Hoc</td>
-                  <td>Lich Su</td>
-                  <td>Dia Ly</td>
-                  <td>KHTN</td>
-                  <td>KHXH</td>
-                </tr>
-                <tr>
-                  <td>${dung.maths}</td>
-                  <td>${dung.literatures}</td>
-                  <td>${dung.foreignLang}</td>
-                  <td>${dung.physics}</td>
-                  <td>${dung.chemistry}</td>
-                  <td>${dung.biology}</td>
-                  <td>${dung.history}</td>
-                  <td>${dung.geography}</td>
-                  <td>${dung.civicEdu}</td>
-                </tr>
-              </table>`
-            // return `<p>Toán Học: </p> <p>${dung.maths}</p>
-            //           <p>Ngữ Văn: </p> <p>${dung.literatures}</p>
-            //           <p>Ngoại Ngữ: </p> <p>${dung.foreignLang}</p>
-            //           <p>Vậy Lý: </p> <p>${dung.physics}</p>
-            //           <p>Hóa Học: </p> <p>${dung.chemistry}</p>
-            //           <p>Sinh Học: </p> <p>${dung.biology}</p>    
-            //           <p>Lịch Sử: </p> <p>${dung.history}</p>
-            //           <p>Địa Lý: </p> <p>${dung.geography}</p>
-            //           <p>e he: </p> <p>${dung.civicEdu}</p>
-            //           `; 
-          });
+          // let jsxs = posts.map((dung) => {
+            if (post.dung.id == parseInt(sbd)) {
+              if (
+                dung.history == 0.0 &&
+                dung.geography == 0.0 &&
+                dung.civicEdu == 0.0
+              ) {
+                return `
+                      <p>Toán Học:${dung.maths}  
+                      Ngữ Văn: ${dung.literatures} 
+                      Ngoại Ngữ: ${dung.foreignLang} 
+                      Vậy Lý: ${dung.physics} 
+                      Hóa Học: ${dung.chemistry} 
+                      Sinh Học: ${dung.biology} 
+                      KHTN: ${sumscore(
+                        parseFloat(dung.physics),
+                        parseFloat(dung.chemistry),
+                        parseFloat(dung.biology)
+                      ).toFixed(3)}</p>  `;
+              } else {
+                return `
+                      <p>Toán Học:${dung.maths}  
+                      Ngữ Văn: ${dung.literatures} 
+                      Ngoại Ngữ: ${dung.foreignLang} 
+                      GDCD: ${dung.civicEdu} 
+                      Lịch Sử: ${dung.history} 
+                      Địa Lý: ${dung.geography} 
+                      KHXH: ${sumscore(
+                        parseFloat(dung.civicEdu),
+                        parseFloat(dung.history),
+                        parseFloat(dung.geography)
+                      ).toFixed(3)}</p> 
+                        `;
+              }
+            } else {
+              `<p>Kết Quả Tìm Kiếm Không Phù Hợp. Vui Lòng Xem Lại Số Báo Danh</p>`;
+    //             var svgContainer = document.getElementById('svgContainer');
+    //             var animItem = bodymovin.loadAnimation({
+    //             wrapper: svgContainer,
+    //             animType: 'svg',
+    //             loop: true,
+    //             animationData: JSON.parse(animationData)
+    // });
+            }
+          // });
           let jsx = jsxs.join('');
           document.getElementById('data-form').innerHTML = jsx;
           // }
@@ -131,6 +145,5 @@ function captchaHandle() {
     }
   });
 }
-
 
 export default Form;

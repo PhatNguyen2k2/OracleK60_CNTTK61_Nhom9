@@ -57,7 +57,8 @@ export const MathsData = {
       {
         label: 'Toán',
         data: [3, 6, 2, 8, 5, 8, 7, 5, 3, 6, 9, 42, 5, 25, 60, 45],
-        backgroundColor: '#FFA500'
+        backgroundColor: '#FFA500',
+        
       }
     ]
   }
@@ -130,7 +131,7 @@ export const MathsData = {
     datasets:
     [
       {
-        label: 'Anh',
+        label: 'Ngoại Ngữ',
         // data: [3, 6, 2, 8, 5, 8, 7, 5, 3, 6, 9, 42, 5, 25, 60, 45],
         backgroundColor: '#FFA500'
       }
