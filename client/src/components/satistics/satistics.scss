@@ -1,10 +1,33 @@
 @import 'media';
 .container {
-  max-width: 1300px;
+  max-width: 1320px;
   margin: 0 auto;
   font-family: 'Times New Roman', Times, serif;
+  //text-align: center;
   .Statis {
     text-align: center;
+    display: inline-block;
+    transition: 2s;
+    @include xs {
+      width: 320px;
+      height: 100%;
+    }
+    @include sm {
+      width: 560px;
+      height: 100%;
+    }
+    @include md {
+      width: 720px;
+      height: 100%;
+    }
+    @include lg {
+      width: 900px;
+      height: 100%;
+    }
+    @include xl {
+      width: 1100px;
+      height: 100%;
+    }
     .dropdown {
       display: flex;
       justify-content: flex-end;
@@ -22,6 +45,18 @@
         option {
           background-color: white;
         }
+        @include xs {
+          font-size: 12px;
+        }
+        @include sm {
+          font-size: 15px;
+        }
+        @include md {
+          font-size: 16px;
+        }
+        @include lg {
+          font-size: 17px;
+        }
       }
     }
     .column {
@@ -32,6 +67,18 @@
       background-color: #f7f7f7;
       margin-bottom: 20px;
       padding: 10px 20px;
+      @include xs {
+        font-size: 18px;
+      }
+      @include sm {
+        font-size: 22px;
+      }
+      @include md {
+        font-size: 25px;
+      }
+      @include lg {
+        font-size: 30px;
+      }
     }
     .barchart {
       color: #4b4b4b;
@@ -41,25 +88,10 @@
       height: 450px;
       border: 1px solid rgb(194, 191, 191);
       box-shadow: 1px 2px 4px 2px rgba($color: #333, $alpha: 0.5);
-      @include xs {
-        max-width: 400px;
-      }
-      @include sm {
-        width: 500px;
-      }
-      @include md {
-        width: 600px;
-      }
-      @include lg {
-        width: 800px;
-      }
-      @include xl {
-        width: 900px;
-      }
+      margin-bottom: 50px;
     }
   }
 }
-
 // *, *::after,*::before{
 //     padding:0;
 //     margin: 0;

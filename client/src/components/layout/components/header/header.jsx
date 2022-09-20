@@ -14,9 +14,8 @@ function Header(){
       <div className="container">
         <div className="nav">
           <div className="nav-logo">
-            <img src={logo}/>
+            <img src={logo} alt="logo"/>
           </div>
-
           <div className="nav-content">
             <p>SỞ GIÁO DỤC VÀ ĐÀO TẠO THÀNH PHỐ HỒ CHÍ MINH <br /> TRANG THÔNG TIN KỲ THI TỐT NGHIỆP THPT </p>
           </div>

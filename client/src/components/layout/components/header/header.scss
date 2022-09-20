@@ -12,26 +12,29 @@ body{
     .container{
         max-width: 1320px;
         margin: 0 auto;
-        height: 10rem;
+        height: 11rem;
     }
     .nav{
         // max-width: 100%;
         display: flex;
         // justify-content: space-between;
-        // justify-content: center;
+        justify-content: center;
         align-items: center;
-        height: 10rem;
+        height: 10.5rem;
         .nav-logo{
             // border: 1px solid blue;
             width: 20%;
             height: auto;
             margin: 3rem;
-            padding: 4px 0px 10px 100px;
+            padding: 4px 0px 5px 100px;
             img{
                 height: auto;
                 width: 100%;
                 display: block;
-                overflow: hidden;
+                margin-top: 7px;
+                // background-color: #F9F871;
+                // border: 1px solid aqua;
+                // overflow: hidden;
             }
         }
         .nav-content{
@@ -40,10 +43,14 @@ body{
             font-weight: 700;
             color: #F9F871;
             letter-spacing: 0.05rem;
+            display: flex;
+            justify-content: flex-start;
         }
         @media (max-width: 1000px) {
             .nav-logo{
                 width: 30vh;
+                // width: 100%;
+                // height: auto;
             }
         }
     }
