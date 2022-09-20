@@ -82,7 +82,6 @@ function sumscore(a,b,c) {
   return sum;
 }
 function captchaHandle() {
-  // if (idCheck == true){
   document.getElementById('btn').style.visibility = 'visible';
   let sbd = document.querySelector('#sbd').value;
   document.querySelector('.form-button').addEventListener('click', (event) => {
@@ -91,35 +90,32 @@ function captchaHandle() {
       fetch('https://jsonplaceholder.typicode.com/users', { method: 'GET' })
         .then((response) => response.json())
         .then((posts) => {
-          // if (posts.id === parseInt(sbd)){
           let jsxs = posts.map((dung) => {
-            if (dung.id == parseInt(sbd) ) {
-              return `
-                    <p>Toán Học:${dung.maths} Ngữ Văn: ${dung.address.geo.lng} Ngoại Ngữ: ${dung.address.geo.lat} Vậy Lý: ${dung.address.geo.lng} Hóa Học: ${dung.address.geo.lat} Sinh Học: ${dung.address.geo.lat} KHTN: ${sumscore(parseFloat(dung.address.geo.lng),parseFloat(dung.address.geo.lat),parseFloat(dung.address.geo.lng)).toFixed(3)}</p> 
-                      `;
+            if (dung.id == parseInt(sbd)) {
+              if (dung.history == 0.0 && dung.geography == 0.0&& dung.civicEdu == 0.0){
+                return `
+                      <p>Toán Học:${dung.maths}  
+                      Ngữ Văn: ${dung.literatures} 
+                      Ngoại Ngữ: ${dung.foreignLang} 
+                      Vậy Lý: ${dung.physics} 
+                      Hóa Học: ${dung.chemistry} 
+                      Sinh Học: ${dung.biology} 
+                      KHTN: ${sumscore(parseFloat(dung.physics),parseFloat(dung.chemistry),parseFloat(dung.biology)).toFixed(3)}</p>  `;
+              }
+              else{
+                return `
+                      <p>Toán Học:${dung.maths}  
+                      Ngữ Văn: ${dung.literatures} 
+                      Ngoại Ngữ: ${dung.foreignLang} 
+                      GDCD: ${dung.civicEdu} 
+                      Lịch Sử: ${dung.history} 
+                      Địa Lý: ${dung.geography} 
+                      KHXH: ${sumscore(parseFloat(dung.civicEdu),parseFloat(dung.history),parseFloat(dung.geography)).toFixed(3)}</p> 
+                        `;
+              }
+            } else {
+              //todo: ẩn điểm các môn: và hiện không tìm thấy kết quả
             }
-            
-            else {//todo: ẩn điểm các môn: và hiện không tìm thấy kết quả
-              
-            }
-            // if (dung.history == 0.0 && dung.geography == 0.0 && dung.civicEdu == 0.0){
-            //   return `<p>Toán Học: </p> <p>${dung.maths}</p>
-            //             <p>Ngữ Văn: </p> <p>${dung.literatures}</p>
-            //             <p>Ngoại Ngữ: </p> <p>${dung.foreignLang}</p>
-            //             <p>Vậy Lý: </p> <p>${dung.physics}</p>
-            //             <p>Hóa Học: </p> <p>${dung.chemistry}</p>
-            //             <p>Sinh Học: </p> <p>${dung.biology}</p>
-            //             `;
-            // }
-            // else if (dung.physics == 0.0 && dung.chemistry == 0.0 && dung.biology == 0.0){
-            //   return `<p>Toán Học: </p> <p>${dung.maths}</p>
-            //             <p>Ngữ Văn: </p> <p>${dung.literatures}</p>
-            //             <p>Ngoại Ngữ: </p> <p>${dung.foreignLang}</p>
-            //             <p>Lịch Sử: </p> <p>${dung.history}</p>
-            //             <p>Địa Lý: </p> <p>${dung.geography}</p>
-            //             <p>GDCD: </p> <p>${dung.civicEdu}</p>
-            //             `;
-            // }
           });
           let jsx = jsxs.join('');
           document.getElementById('data-form').innerHTML = jsx;
@@ -130,6 +126,5 @@ function captchaHandle() {
     }
   });
 }
-// }
 
 export default Form;
