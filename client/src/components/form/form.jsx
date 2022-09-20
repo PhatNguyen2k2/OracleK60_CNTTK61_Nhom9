@@ -2,30 +2,6 @@ import React from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import './form.scss';
 function Form() {
-  // const [sbd, setSBD] = useState('');
-  // const [validationMsg, setValidationMsg] = useState('');
-
-  // const onChangeSBD = (event) => {
-  //   const value = event.target.value;
-  //   setSBD(value);
-  // };
-  // const validateAll = () => {
-  //   const msg = {};
-  //   if (isEmpty(sbd)) {
-  //     msg.sbd = 'Vui Lòng Nhập Số Báo Danh';
-  //   } else if (sbd.lenght() != 7) {
-  //     msg.sbd = 'Vui Lòng Nhập Đủ 7 Chữ Số';
-  //   }
-  //   setValidationMsg(msg);
-  //   if (Object.keys(msg).length > 0) return flase;
-  //   return true;
-  // };
-
-  // const onSubmitSBD = (event) => {
-  //   const isValid = validateAll();
-  //   if (!isValid) return;
-  //   //call API
-  // };
   return (
     <div className="container">
       <div className="content">
@@ -39,6 +15,7 @@ function Form() {
               <p>Thí Sinh Nhập Số Báo Danh Vào Ô Dưới Đây và Tích Check</p>
             </div>
             <div className="input-group">
+              <p id="msg">Vui Lòng Nhập Số Và Đủ 7 Ký Tự </p>
               <label htmlFor="sbd">Số báo danh</label>
               <input
                 type="text"
@@ -53,8 +30,6 @@ function Form() {
                 pattern="[0-9]{7}"
                 required
               />
-              <br></br>
-              <p id="msg">Vui Lòng Nhập Số Và Đủ 7 Ký Tự </p>
             </div>
           </div>
           <ReCAPTCHA
@@ -76,7 +51,10 @@ function Form() {
               </a>
             </div>
           </div>
-          <div id="data-form"></div>
+          <div className="form-score">
+            <p id="score">Điểm các môn: </p>
+            <div id="data-form"></div>
+          </div>
         </form>
       </div>
     </div>
@@ -98,45 +76,50 @@ function idCheck() {
   }
   return flag;
 }
-// function idCheckbutonClick() {
-//   const input = document.getElementById('sbd').value;
-//   // document.getElementById('btn').style.visibility = 'hidden';
-//   if (input.length < 7 ) {
-//     text.style.visibility = 'visible';
-//     // location.reload()
-//   }
-//   else if(isNaN(input)){
-//     text.style.visibility = 'visible';
-//   }
-//   else {
-//     text.style.visibility = 'hidden';
-
-//   }
-// }dị đó
+function sumscore(a,b,c) {
+  let sum = "0.0";
+  sum = (a+b+c)/3;
+  return sum;
+}
 function captchaHandle() {
-  // // idCheckbutonClick()
   // if (idCheck == true){
   document.getElementById('btn').style.visibility = 'visible';
   let sbd = document.querySelector('#sbd').value;
-  console.log(sbd);
   document.querySelector('.form-button').addEventListener('click', (event) => {
     if (idCheck()) {
-      fetch('https://jsonplaceholder.typicode.com/posts', { method: 'GET' })
+      document.getElementById('score').style.visibility = 'visible';
+      fetch('https://jsonplaceholder.typicode.com/users', { method: 'GET' })
         .then((response) => response.json())
         .then((posts) => {
           // if (posts.id === parseInt(sbd)){
           let jsxs = posts.map((dung) => {
-            // if (posts.id === sbd){
-            return `<p>Toán Học: </p> <p>${dung.maths}</p>
-                      <p>Ngữ Văn: </p> <p>${dung.literatures}</p>
-                      <p>Ngoại Ngữ: </p> <p>${dung.foreignLang}</p>
-                      <p>Vậy Lý: </p> <p>${dung.physics}</p>
-                      <p>Hóa Học: </p> <p>${dung.chemistry}</p>
-                      <p>Sinh Học: </p> <p>${dung.biology}</p>    
-                      <p>Lịch Sử: </p> <p>${dung.history}</p>
-                      <p>Địa Lý: </p> <p>${dung.geography}</p>
-                      <p>e he: </p> <p>${dung.civicEdu}</p>
-                      `; //}
+            if (dung.id == parseInt(sbd) ) {
+              return `
+                    <p>Toán Học:${dung.maths} Ngữ Văn: ${dung.address.geo.lng} Ngoại Ngữ: ${dung.address.geo.lat} Vậy Lý: ${dung.address.geo.lng} Hóa Học: ${dung.address.geo.lat} Sinh Học: ${dung.address.geo.lat} KHTN: ${sumscore(parseFloat(dung.address.geo.lng),parseFloat(dung.address.geo.lat),parseFloat(dung.address.geo.lng)).toFixed(3)}</p> 
+                      `;
+            }
+            
+            else {//todo: ẩn điểm các môn: và hiện không tìm thấy kết quả
+              
+            }
+            // if (dung.history == 0.0 && dung.geography == 0.0 && dung.civicEdu == 0.0){
+            //   return `<p>Toán Học: </p> <p>${dung.maths}</p>
+            //             <p>Ngữ Văn: </p> <p>${dung.literatures}</p>
+            //             <p>Ngoại Ngữ: </p> <p>${dung.foreignLang}</p>
+            //             <p>Vậy Lý: </p> <p>${dung.physics}</p>
+            //             <p>Hóa Học: </p> <p>${dung.chemistry}</p>
+            //             <p>Sinh Học: </p> <p>${dung.biology}</p>
+            //             `;
+            // }
+            // else if (dung.physics == 0.0 && dung.chemistry == 0.0 && dung.biology == 0.0){
+            //   return `<p>Toán Học: </p> <p>${dung.maths}</p>
+            //             <p>Ngữ Văn: </p> <p>${dung.literatures}</p>
+            //             <p>Ngoại Ngữ: </p> <p>${dung.foreignLang}</p>
+            //             <p>Lịch Sử: </p> <p>${dung.history}</p>
+            //             <p>Địa Lý: </p> <p>${dung.geography}</p>
+            //             <p>GDCD: </p> <p>${dung.civicEdu}</p>
+            //             `;
+            // }
           });
           let jsx = jsxs.join('');
           document.getElementById('data-form').innerHTML = jsx;
