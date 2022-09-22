@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
+}
+body {
+  font-size: 1.6rem;
+}
+.nav-bg {
+  background-color: #6895ba;
+  height: auto;
+  .container {
+    max-width: 1320px;
+    margin: 0 auto;
+    // height: 11rem;
+    // height: auto;
+  }
+  .nav {
+    // max-width: 100%;
+    display: flex;
+    // justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    // height: 10.5rem;
+    .nav-logo {
+      // border: 1px solid blue;
+      display: inline-block;
+      width: 20%;
+      height: auto;
+      margin: 1rem;
+      //   padding-left: 150px;
+      //   padding: 4px 0px 5px 100px;
+      img {
+        margin-left: 90px;
+        height: auto;
+        width: 60%;
+        display: inline-block;
+        // margin-top: 7px;
+
+        // background-color: #F9F871;
+        // border: 1px solid aqua;
+        // overflow: hidden;
+      }
+    }
+    .nav-content {
+      // border: 2px solid yellow;
+      width: 80%;
+      font-weight: 700;
+      color: #f9f871;
+      letter-spacing: 0.05rem;
+      //   display: flex;
+      //   justify-content: flex-start;
+    }
+    @media (max-width: 1000px) {
+      .nav-logo {
+        width: 30vh;
+        // width: 100%;
+        // height: auto;
+      }
+    }
+    @media (max-width: 700px) {
+      .nav-content {
+        font-size: 20px;
+      }
+    }
+    @media (max-width: 600px) {
+      display: block;
+      .nav-logo {
+        margin-left: 120px;
+        height: 30px;
+        width: 33%;
+        // text-align: center;
+        // width: 20vh;
+        // img {
+        //   width: 40%;
+        // //   padding-left: 80px;
+        // }
+      }
+      .nav-content {
+        display: inline;
+        // margin-top: ;
+        width: 100%;
+        font-size: 15px;
+        padding-left: 35px;
+        text-align: center;
+      }
+    }
+    @media (min-width: 300px) and (max-width: 600px) {
+      .nav-logo {
+        margin-left: 50px;
+        height: 60px;
+
+        img {
+          max-width: 60px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
