@@ -20,19 +20,40 @@ function Statistics() {
   return (
     <div className="container">
       <div className="Statis">
-        <div className="column">PHỔ ĐIỂM THI THPT QUỐC GIA - 2022</div> <hr /><br />
+        <div className="column">PHỔ ĐIỂM THI THPT QUỐC GIA - 2022</div> <hr />
+        <br />
         <div className="subject">
-          <a id="toan">Toán Học</a>
-          <a id="van">Ngữ Văn</a>
-          <a id="av">Ngoại Ngữ</a>
-          <a id="ly">Vật Lý</a>
-          <a id="hoa">Hóa Học</a>
-          <a id="sinh">Sinh Học</a>
-          <a id="su">Lịch Sử</a>
-          <a id="dia">Địa Lý</a>
-          <a id="gdcd">GDCD</a>
+          <div className="sub" id="toan">
+            Toán
+          </div>
+          <div className="sub" id="van">
+            Ngữ Văn
+          </div>
+          <div className="sub" id="av">
+            Ngoại Ngữ
+          </div>
+          <div className="sub" id="ly">
+            Vật Lý
+          </div>
+          <div className="sub" id="hoa">
+            Hóa Học
+          </div>
+          <div className="sub" id="sinh">
+            Sinh Học
+          </div>
+          <div className="sub" id="su">
+            Lịch Sử
+          </div>
+          <div className="sub" id="dia">
+            Địa Lý
+          </div>
+          <div className="sub" id="gdcd">
+            GDCD
+          </div>
         </div>
-        <h1 className="phodiem">Phổ điểm môn Toán </h1>
+        <div className="phodiem">
+          <strong>Phổ điểm môn Toán </strong>
+        </div>
         <div className="barchart">
           <BarChart labelData={MathsData} />
         </div>
@@ -48,23 +69,23 @@ function Statistics() {
         <div className="barchart">
           <BarChart labelData={PhyData} />
         </div>
-        <h1 className="phodiem">Phổ điểm môn Hóa </h1>
+        <h1 className="phodiem">Phổ điểm môn Hóa Học </h1>
         <div className="barchart">
           <BarChart labelData={ChemistryData} />
         </div>
-        <h1 className="phodiem">Phổ điểm môn Sinh </h1>
+        <h1 className="phodiem">Phổ điểm môn Sinh Học</h1>
         <div className="barchart">
           <BarChart labelData={BioData} />
         </div>
-        <h1 className="phodiem">Phổ điểm môn Sử </h1>
+        <h1 className="phodiem">Phổ điểm môn Lịch Sử </h1>
         <div className="barchart">
           <BarChart labelData={HisData} />
         </div>
-        <h1 className="phodiem">Phổ điểm môn Địa </h1>
+        <h1 className="phodiem">Phổ điểm môn Địa Lý </h1>
         <div className="barchart">
           <BarChart labelData={GeoData} />
         </div>
-        <h1 className="phodiem">Phổ điểm môn GDCD </h1>
+        <h1 className="phodiem">Phổ điểm môn Giáo Dục Công Dân </h1>
         <div className="barchart">
           <BarChart labelData={CivicData} />
         </div>
@@ -113,7 +134,7 @@ $(document).ready(function () {
 });
 $(document).ready(function () {
   $('#dia').click(function () {
-    $('html, body').animate({ scrollTop: 5000 }, 1000);
+    $('html, body').animate({ scrollTop: 4900 }, 1000);
   });
 });
 $(document).ready(function () {

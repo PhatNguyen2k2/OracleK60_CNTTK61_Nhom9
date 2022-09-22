@@ -21,7 +21,7 @@ function Footer() {
               </li>
               <li>
                 <i class="bi bi-telephone"></i>
-                <span>(+84) 2838 229 360</span>y
+                <span>(+84) 2838 229 360</span>
               </li>
               <li>
                 <i class="bi bi-envelope"></i>

@@ -12,7 +12,7 @@ function Form() {
           </div>
           <div className="form-input">
             <div className="input-guide">
-              <p>Thí Sinh Nhập Số Báo Danh Vào Ô Dưới Đây và Tích Check</p>
+              <p>Thí sinh nhập số báo danh và tích vào các ô dưới đây</p>
             </div>
             <div className="input-group">
               <p id="msg">Vui Lòng Nhập Số Và Đủ 7 Ký Tự </p>
@@ -85,62 +85,58 @@ function sumscore(a, b, c) {
 function captchaHandle() {
   document.getElementById('btn').style.visibility = 'visible';
   let sbd = document.querySelector('#sbd').value;
+  const div = document.getElementById('data-form');
   document.querySelector('.form-button').addEventListener('click', (event) => {
     if (idCheck()) {
-      document.getElementById('score').style.visibility = 'visible';
-      fetch('https://jsonplaceholder.typicode.com/users', { method: 'GET' })
-        .then((response) => response.json())
-        .then((posts) => {
-          // let jsxs = posts.map((dung) => {
-            if (post.dung.id == parseInt(sbd)) {
-              if (
-                dung.history == 0.0 &&
-                dung.geography == 0.0 &&
-                dung.civicEdu == 0.0
-              ) {
-                return `
-                      <p>Toán Học:${dung.maths}  
-                      Ngữ Văn: ${dung.literatures} 
-                      Ngoại Ngữ: ${dung.foreignLang} 
-                      Vậy Lý: ${dung.physics} 
-                      Hóa Học: ${dung.chemistry} 
-                      Sinh Học: ${dung.biology} 
-                      KHTN: ${sumscore(
-                        parseFloat(dung.physics),
-                        parseFloat(dung.chemistry),
-                        parseFloat(dung.biology)
-                      ).toFixed(3)}</p>  `;
-              } else {
-                return `
-                      <p>Toán Học:${dung.maths}  
-                      Ngữ Văn: ${dung.literatures} 
-                      Ngoại Ngữ: ${dung.foreignLang} 
-                      GDCD: ${dung.civicEdu} 
-                      Lịch Sử: ${dung.history} 
-                      Địa Lý: ${dung.geography} 
-                      KHXH: ${sumscore(
-                        parseFloat(dung.civicEdu),
-                        parseFloat(dung.history),
-                        parseFloat(dung.geography)
-                      ).toFixed(3)}</p> 
-                        `;
-              }
+      // document.getElementById('score').style.visibility = 'visible';
+      fetch(`https://jsonplaceholder.typicode.com/users/${sbd}`, {
+        method: 'GET'
+      })
+      .then((res) => {
+        // console.log(sbd);
+        if (res.status === 404)
+          div.innerHTML = `<p style = "font-size:17px;text-align:center;color:red;word-spacing: 1px;">Không tìm thấy thông tin thí sinh !</p>`;
+        else {
+          Promise.resolve(res.json()).then((dung) => {
+            console.log(dung);
+            if (
+              dung.history == 0.0 &&
+              dung.geography == 0.0 &&
+              dung.civicEdu == 0.0
+            ) {
+              document.getElementById('score').style.visibility = 'visible';
+              div.innerHTML = ` <p>
+                    Toán Học:${dung.maths}
+                    Ngữ Văn: ${dung.literatures}
+                    Ngoại Ngữ: ${dung.foreignLang}
+                    Vậy Lý: ${dung.physics}
+                    Hóa Học: ${dung.chemistry}
+                    Sinh Học: ${dung.biology}
+                    KHTN: ${sumscore(
+                      parseFloat(dung.physics),
+                      parseFloat(dung.chemistry),
+                      parseFloat(dung.biology)
+                    ).fixed(3)} </p> `;
             } else {
-              `<p>Kết Quả Tìm Kiếm Không Phù Hợp. Vui Lòng Xem Lại Số Báo Danh</p>`;
-    //             var svgContainer = document.getElementById('svgContainer');
-    //             var animItem = bodymovin.loadAnimation({
-    //             wrapper: svgContainer,
-    //             animType: 'svg',
-    //             loop: true,
-    //             animationData: JSON.parse(animationData)
-    // });
+              document.getElementById('score').style.visibility = 'visible';
+              div.innerHTML = ` <p>
+                    Toán Học:${dung.maths}
+                    Ngữ Văn: ${dung.literatures}
+                    Ngoại Ngữ: ${dung.foreignLang}
+                    GDCD: ${dung.ivicEdu}
+                    Lịch Sử: ${dung.history}
+                    Địa Lý: ${dung.geography}
+                    KHXH: ${sumscore(
+                      parseFloat(dung.civicEdu),
+                      parseFloat(dung.history),
+                      parseFloat(dung.geography)
+                    ).fixed(3)}
+                     </p> `;
             }
-          // });
-          let jsx = jsxs.join('');
-          document.getElementById('data-form').innerHTML = jsx;
-          // }
-        })
-        .catch((err) => console.log(err));
+          });
+        }
+      })
+        .catch((err) => console.error(err));
       event.preventDefault();
     }
   });

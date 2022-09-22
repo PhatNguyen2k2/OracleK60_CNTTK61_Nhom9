@@ -1,11 +1,11 @@
 @import 'media';
 .container {
-  max-width: 1320px;
+  max-width: 1100px;
   margin: 0 auto;
   font-family: 'Times New Roman', Times, serif;
   //text-align: center;
   .Statis {
-    text-align: center;
+    //text-align: center;
     display: inline-block;
     transition: 2s;
     @include xs {
@@ -28,38 +28,44 @@
       width: 1100px;
       height: 100%;
     }
-    .dropdown {
+    .subject {
+      width: 100%;
+      height: auto;
       display: flex;
-      justify-content: flex-end;
-      margin-bottom: 20px;
-      .dropdown-content {
-        margin-right: 10px;
-        font-weight: bold;
-        outline: none;
-        border: none;
-        background-color: none;
-        border: 2px solid #a8a4a4;
-        border-radius: 5px;
-        padding: 8px 10px;
-        font-family: 'Poppins', sans-serif;
-        option {
-          background-color: white;
+      flex-direction: row;
+      justify-content: space-around;
+      flex-flow: wrap;
+      .sub {
+        width: 10%;
+        border: 2px solid #65a87d;
+        // padding: 0.5rem 0.5rem;
+        margin: 0px 3px;
+        padding: 8px;
+        transition: all 1s;
+        color: black;
+        background-color: #ffffcc;
+        text-align: center;
+        font-size: 15px;
+        cursor: pointer;
+        // float: left;
+        &:hover {
+          background-color: #9acd32;
+          border-radius: 15px;
         }
-        @include xs {
-          font-size: 12px;
+      }
+      @media (max-width: 1000px) {
+        .sub {
+          width: 25%;
         }
-        @include sm {
-          font-size: 15px;
-        }
-        @include md {
-          font-size: 16px;
-        }
-        @include lg {
-          font-size: 17px;
+      }
+      @media (min-width: 570px) {
+        .sub {
+          font-size: 20px;
         }
       }
     }
     .column {
+      text-align: center;
       font-family: 'Roboto Condensed', sans-serif;
       font-size: 25px;
       color: #43655a;
@@ -80,12 +86,15 @@
         font-size: 30px;
       }
     }
+
     .phodiem {
       color: #333;
       // border: 2px solid black;
-      padding-top: 40px;
+      margin-top: 40px;
+      padding-top: 20px;
       padding-bottom: 0.5px;
       font-size: 25px;
+      text-align: center;
     }
     .barchart {
       color: #4b4b4b;
@@ -99,40 +108,38 @@
       margin-top: 10px;
     }
   }
-  .subject {
-    a {
-      text-decoration: none;
-      // border: 2px solid pink;
-      // padding: 0.5rem 0.5rem;
-      padding: 15px;
-      transition: all 2s;
-      color: black;
-      background-color: #ffffcc;
-
-      &:hover {
-        background-color: #9acd32;
-        border-radius: 15px;
-        // transition: all .5s;
-        // transition-property: all;
-        // transition-duration: 0.5s;
-        // transition-timing-function: ease;
-      }
-    }
-    // @include xs {
-    //   font-size: 20px;
-    // }
-    // @include sm {
-    //   font-size: 15px;
-    // }
-    // @include md {
-    //   font-size: 16px;
-    // }
-    // @include lg {
-    //   font-size: 17px;
-    // }
-    // text-align: initial;
-  }
+  // .dropdown {
+  //   display: flex;
+  //   justify-content: flex-end;
+  //   margin-bottom: 20px;
+  //   .dropdown-content {
+  //     margin-right: 10px;
+  //     font-weight: bold;
+  //     outline: none;
+  //     border: none;
+  //     background-color: none;
+  //     border: 2px solid #a8a4a4;
+  //     border-radius: 5px;
+  //     padding: 8px 10px;
+  //     font-family: 'Poppins', sans-serif;
+  //     option {
+  //       background-color: white;
+  //     }
+  //     @include xs {
+  //       font-size: 12px;
+  //     }
+  //     @include sm {
+  //       font-size: 15px;
+  //     }
+  //     @include md {
+  //       font-size: 16px;
+  //     }
+  //     @include lg {
+  //       font-size: 17px;
+  //     }
+  // }
 }
+
 // *, *::after,*::before{
 //     padding:0;
 //     margin: 0;
