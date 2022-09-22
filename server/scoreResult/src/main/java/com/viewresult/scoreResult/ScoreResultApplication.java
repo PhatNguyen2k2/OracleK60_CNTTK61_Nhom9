@@ -12,5 +12,3 @@ public class ScoreResultApplication {
 
 }
 
-//to view port 8080 is running : netstat -ano | findstr 8080
-//then kill it : taskkill /F /PID <Process Id>
