@@ -18,7 +18,7 @@ import com.viewresult.scoreResult.repository.StudentRepository;
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
-@RequestMapping("/api")
+@RequestMapping(produces = "application/json", value = "/api")
 
 public class StudentController {
 	@Autowired
