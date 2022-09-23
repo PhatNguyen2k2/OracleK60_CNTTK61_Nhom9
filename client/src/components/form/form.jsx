@@ -26,7 +26,7 @@ function Form() {
                 autoFocus
                 autoComplete="off"
                 placeholder="VD: 1234567"
-                onKeyDown={idCheck}
+                onKeyUp={idCheck}
                 pattern="[0-9]{7}"
                 required
               />
@@ -53,7 +53,7 @@ function Form() {
           </div>
           <div className="form-score">
             <p id="score">Điểm các môn: </p>
-              <div id="data-form"></div>
+            <div id="data-form"></div>
           </div>
           {/* <div id="svgContainer"></div> */}
         </form>
@@ -65,7 +65,7 @@ function idCheck() {
   let flag = false;
   const input = document.getElementById('sbd').value;
   const text = document.getElementById('msg');
-  if (input.length < 7 || input.length == 0) {
+  if (input.length <= 6) {
     text.style.visibility = 'visible';
     flag = false;
   } else if (isNaN(input)) {
@@ -89,24 +89,29 @@ function captchaHandle() {
   document.querySelector('.form-button').addEventListener('click', (event) => {
     if (idCheck()) {
       // document.getElementById('score').style.visibility = 'visible';
-      fetch(`https://jsonplaceholder.typicode.com/users/${sbd}`, {
-        method: 'GET'
+      fetch(`http://localhost:8080/api/student/${sbd}`, {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'User-Agent': 'request',
+          'Access-Control-Allow-Origin': '*'
+        }
       })
-      .then((res) => {
-        // console.log(sbd);
-        if (res.status === 404)
-          div.innerHTML = `<p style = "font-size:17px;text-align:center;color:red;word-spacing: 1px;">Không tìm thấy thông tin thí sinh !</p>`;
-        else {
-          Promise.resolve(res.json()).then((dung) => {
-            console.log(dung);
-            if (
-              dung.history == 0.0 &&
-              dung.geography == 0.0 &&
-              dung.civicEdu == 0.0
-            ) {
-              document.getElementById('score').style.visibility = 'visible';
-              div.innerHTML = ` <p>
-                    Toán Học:${dung.maths}
+        .then((res) => {
+          // console.log(sbd);
+          if (res.status === 404)
+            div.innerHTML = `<p style = "font-size:17px;text-align:center;color:red;word-spacing: 1px;">Không tìm thấy thông tin thí sinh !</p>`;
+          else {
+            Promise.resolve(res.json()).then((dung) => {
+              if (
+                dung.history == 0.0 &&
+                dung.geography == 0.0 &&
+                dung.civicEdu == 0.0
+              ) {
+                document.getElementById('score').style.visibility = 'visible';
+                div.innerHTML = ` <p>
+                    Toán Học: ${dung.maths}
                     Ngữ Văn: ${dung.literatures}
                     Ngoại Ngữ: ${dung.foreignLang}
                     Vậy Lý: ${dung.physics}
@@ -116,26 +121,26 @@ function captchaHandle() {
                       parseFloat(dung.physics),
                       parseFloat(dung.chemistry),
                       parseFloat(dung.biology)
-                    ).fixed(3)} </p> `;
-            } else {
-              document.getElementById('score').style.visibility = 'visible';
-              div.innerHTML = ` <p>
-                    Toán Học:${dung.maths}
+                    ).toFixed(3)} </p> `;
+              } else {
+                document.getElementById('score').style.visibility = 'visible';
+                div.innerHTML = ` <p>
+                    Toán Học: ${dung.maths}
                     Ngữ Văn: ${dung.literatures}
                     Ngoại Ngữ: ${dung.foreignLang}
-                    GDCD: ${dung.ivicEdu}
+                    GDCD: ${dung.civicEdu}
                     Lịch Sử: ${dung.history}
                     Địa Lý: ${dung.geography}
                     KHXH: ${sumscore(
                       parseFloat(dung.civicEdu),
                       parseFloat(dung.history),
                       parseFloat(dung.geography)
-                    ).fixed(3)}
+                    ).toFixed(3)}
                      </p> `;
-            }
-          });
-        }
-      })
+              }
+            });
+          }
+        })
         .catch((err) => console.error(err));
       event.preventDefault();
     }
