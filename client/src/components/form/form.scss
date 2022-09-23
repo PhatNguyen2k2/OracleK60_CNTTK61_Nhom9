@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -43,6 +43,7 @@
           margin-top: 10px;
           margin-bottom: 20px;
           margin-left: 110px;
+          display: flex;
           label {
             margin-left: 100px;
           }
@@ -55,15 +56,31 @@
             &:focus-visible {
               outline: none;
             }
+            &:invalid{
+              outline: 2px solid red;
+              border-radius: 6px;
+            }
+            &:valid{
+              outline: 2px solid green;
+              border-radius: 6px;
+            }
           }
-          #msg{
+          #msg {
             color: red;
             font-style: italic;
             font-size: 13px;
             margin-left: 270px;
             visibility: hidden;
           }
-        }
+          .reload {
+            padding-top: 20px;
+            a {
+              i {
+                padding-left: 5px;
+              }
+            }
+          }
+        } 
       }
       .captcha {
         margin-left: auto;

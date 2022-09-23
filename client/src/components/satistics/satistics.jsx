@@ -9,7 +9,7 @@ import {
   LiterData,
   EngData,
   PhyData,
-  ChemistryData,
+  CheData,
   BioData,
   HisData,
   GeoData,
@@ -71,7 +71,7 @@ function Statistics() {
         </div>
         <h1 className="phodiem">Phổ điểm môn Hóa Học </h1>
         <div className="barchart">
-          <BarChart labelData={ChemistryData} />
+          <BarChart labelData={CheData} />
         </div>
         <h1 className="phodiem">Phổ điểm môn Sinh Học</h1>
         <div className="barchart">
