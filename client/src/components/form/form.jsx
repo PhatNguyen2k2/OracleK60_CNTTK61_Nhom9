@@ -15,21 +15,32 @@ function Form() {
               <p>Thí sinh nhập số báo danh và tích vào các ô dưới đây</p>
             </div>
             <div className="input-group">
-              <p id="msg">Vui Lòng Nhập Số Và Đủ 7 Ký Tự </p>
-              <label htmlFor="sbd">Số báo danh</label>
-              <input
-                type="text"
-                id="sbd"
-                name="sbd"
-                maxLength="7"
-                size="7"
-                autoFocus
-                autoComplete="off"
-                placeholder="VD: 1234567"
-                onKeyUp={idCheck}
-                pattern="[0-9]{7}"
-                required
-              />
+              <div>
+                <p id="msg">Vui Lòng Nhập Số Và Đủ 7 Ký Tự </p>
+                <label htmlFor="sbd">Số báo danh</label>
+                <input
+                  type="text"
+                  id="sbd"
+                  name="sbd"
+                  maxLength="7"
+                  size="7"
+                  autoFocus
+                  autoComplete="off"
+                  placeholder="VD: 1234567"
+                  onKeyUp={idCheck}
+                  pattern="[0-9]{7}"
+                  required
+                />
+              </div>
+              <div className="reload">
+                <a
+                  href="javascript:document.location.reload();"
+                  onmouseout="window.status='default'"
+                  onmouseover="window.status='Refresh'; return true"
+                >
+                  <i class="bi bi-arrow-clockwise"></i>
+                </a>
+              </div>
             </div>
           </div>
           <ReCAPTCHA
@@ -43,7 +54,7 @@ function Form() {
           />
           <div className="form-click">
             <div className="form-button" id="btn">
-              <button type="submit"> Tra Cứu </button>
+              <button type="submit" onclick = {blockForm}> Tra Cứu </button>
             </div>
             <div className="form-next">
               <a href="http://localhost:3000/statistics">
@@ -61,6 +72,11 @@ function Form() {
     </div>
   );
 }
+
+function blockForm(){
+  document.getElementById('sbd').readOnly.true;
+}
+
 function idCheck() {
   let flag = false;
   const input = document.getElementById('sbd').value;

@@ -32,8 +32,8 @@ public class StudentController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	@GetMapping("/statistics/marks")
-	public ResponseEntity<String> get_points(@RequestParam(name = "subject") String subject){
+	@GetMapping("/statistics/marks/{subject}")
+	public ResponseEntity<String> get_points(@PathVariable("subject") String subject){
 		String arr = studentRepository.marks(subject);
 		String newArr = arr.substring(1, arr.length());
 		if (!newArr.isEmpty()) {
@@ -42,8 +42,8 @@ public class StudentController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	@GetMapping("/statistics/counts")
-	public ResponseEntity<String> get_subject_points(@RequestParam(name = "subject") String subject){
+	@GetMapping("/statistics/counts/{subject}")
+	public ResponseEntity<String> get_subject_points(@PathVariable("subject") String subject){
 		String arr = studentRepository.count(subject);
 		if (!arr.isEmpty()) {
 			return new ResponseEntity<>(arr, HttpStatus.OK);
