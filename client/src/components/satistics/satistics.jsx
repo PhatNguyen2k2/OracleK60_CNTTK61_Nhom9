@@ -1,20 +1,8 @@
-// import React , {useEffect, useState} from 'react';
 import React from 'react';
-import BarChart from './barchart';
 import { Chart as ChartJS } from 'chart.js/auto';
+import { Chart } from 'chart.js';
 import styles from './satistics.scss';
 import $ from 'jquery';
-import {
-  MathsData,
-  LiterData,
-  EngData,
-  PhyData,
-  CheData,
-  BioData,
-  HisData,
-  GeoData,
-  CivicData
-} from './subdata';
 
 function Statistics() {
   return (
@@ -55,48 +43,44 @@ function Statistics() {
           <strong>Phổ điểm môn Toán </strong>
         </div>
         <div className="barchart">
-          <BarChart labelData={MathsData} />
+          <canvas id="mathsChart"></canvas>
         </div>
         <h1 className="phodiem">Phổ điểm môn Văn </h1>
         <div className="barchart">
-          <BarChart labelData={LiterData} />
+          <canvas id="literChart"></canvas>
         </div>
         <h1 className="phodiem">Phổ điểm môn Ngoại ngữ </h1>
         <div className="barchart">
-          <BarChart labelData={EngData} />
+          <canvas id="engChart"></canvas>
         </div>
         <h1 className="phodiem">Phổ điểm môn Vật Lý </h1>
         <div className="barchart">
-          <BarChart labelData={PhyData} />
+          <canvas id="phyChart"></canvas>
         </div>
         <h1 className="phodiem">Phổ điểm môn Hóa Học </h1>
         <div className="barchart">
-          <BarChart labelData={CheData} />
+          <canvas id="cheChart"></canvas>
         </div>
         <h1 className="phodiem">Phổ điểm môn Sinh Học</h1>
         <div className="barchart">
-          <BarChart labelData={BioData} />
+          <canvas id="bioChart"></canvas>
         </div>
         <h1 className="phodiem">Phổ điểm môn Lịch Sử </h1>
         <div className="barchart">
-          <BarChart labelData={HisData} />
+          <canvas id="hisChart"></canvas>
         </div>
         <h1 className="phodiem">Phổ điểm môn Địa Lý </h1>
         <div className="barchart">
-          <BarChart labelData={GeoData} />
+          <canvas id="geoChart"></canvas>
         </div>
         <h1 className="phodiem">Phổ điểm môn Giáo Dục Công Dân </h1>
         <div className="barchart">
-          <BarChart labelData={CivicData} />
+          <canvas id="civicChart"></canvas>
         </div>
       </div>
     </div>
   );
 }
-
-// $(window).scroll(function () {
-//   console.log($(this).scrollTop());
-// });
 $(document).ready(function () {
   $('#toan').click(function () {
     $('html, body').animate({ scrollTop: 328 }, 1000);
@@ -142,5 +126,401 @@ $(document).ready(function () {
     $('html, body').animate({ scrollTop: 5600 }, 1000);
   });
 });
+
+fetch('http://localhost:8080/api/statistics/marks/Toán', {
+  method: 'GET',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
+  }
+})
+  .then((marks) => {
+    return marks.text();
+  })
+  .then((mark) => {
+    const ruby = mark.replaceAll('.00', '');
+    const score = ruby.split(',');
+    score.shift();
+    fetch('http://localhost:8080/api/statistics/counts/Toán', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((counts) => {
+        return counts.text();
+      })
+      .then((count) => {
+        const ncount = count.split(',');
+        ncount.shift();
+        new Chart(document.getElementById('mathsChart'), {
+          type: 'bar',
+          data: {
+            labels: score,
+            datasets: [
+              {
+                label: 'Toán',
+                data: ncount,
+                backgroundColor: '#FFA500'
+              }
+            ]
+          },
+          options: { maintainAspectRatio: false }
+        });
+      });
+  });
+
+fetch('http://localhost:8080/api/statistics/marks/Văn', {
+  method: 'GET',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
+  }
+})
+  .then((marks) => {
+    return marks.text();
+  })
+  .then((mark) => {
+    const ruby = mark.replaceAll('.00', '');
+    const score = ruby.split(',');
+    score.shift();
+    fetch('http://localhost:8080/api/statistics/counts/Văn', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((counts) => {
+        return counts.text();
+      })
+      .then((count) => {
+        const ncount = count.split(',');
+        ncount.shift();
+        new Chart(document.getElementById('literChart'), {
+          type: 'bar',
+          data: {
+            labels: score,
+            datasets: [
+              {
+                label: 'Văn',
+                data: ncount,
+                backgroundColor: '#FFA500'
+              }
+            ]
+          },
+          options: { maintainAspectRatio: false }
+        });
+      });
+  });
+
+fetch('http://localhost:8080/api/statistics/marks/Anh', {
+  method: 'GET',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
+  }
+})
+  .then((marks) => {
+    return marks.text();
+  })
+  .then((mark) => {
+    const ruby = mark.replaceAll('.00', '');
+    const score = ruby.split(',');
+    score.shift();
+    fetch('http://localhost:8080/api/statistics/counts/Anh', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((counts) => {
+        return counts.text();
+      })
+      .then((count) => {
+        const ncount = count.split(',');
+        ncount.shift();
+        new Chart(document.getElementById('engChart'), {
+          type: 'bar',
+          data: {
+            labels: score,
+            datasets: [
+              {
+                label: 'Ngoại Ngữ',
+                data: ncount,
+                backgroundColor: '#FFA500'
+              }
+            ]
+          },
+          options: { maintainAspectRatio: false }
+        });
+      });
+  });
+
+fetch('http://localhost:8080/api/statistics/marks/Lí', {
+  method: 'GET',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
+  }
+})
+  .then((marks) => {
+    return marks.text();
+  })
+  .then((mark) => {
+    const ruby = mark.replaceAll('.00', '');
+    const score = ruby.split(',');
+    score.shift();
+    fetch('http://localhost:8080/api/statistics/counts/Lí', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((counts) => {
+        return counts.text();
+      })
+      .then((count) => {
+        const ncount = count.split(',');
+        ncount.shift();
+        new Chart(document.getElementById('phyChart'), {
+          type: 'bar',
+          data: {
+            labels: score,
+            datasets: [
+              {
+                label: 'Vật Lý',
+                data: ncount,
+                backgroundColor: '#FFA500'
+              }
+            ]
+          },
+          options: { maintainAspectRatio: false }
+        });
+      });
+  });
+
+fetch('http://localhost:8080/api/statistics/marks/Hóa', {
+  method: 'GET',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
+  }
+})
+  .then((marks) => {
+    return marks.text();
+  })
+  .then((mark) => {
+    const ruby = mark.replaceAll('.00', '');
+    const score = ruby.split(',');
+    score.shift();
+    fetch('http://localhost:8080/api/statistics/counts/Hóa', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((counts) => {
+        return counts.text();
+      })
+      .then((count) => {
+        const ncount = count.split(',');
+        ncount.shift();
+        new Chart(document.getElementById('cheChart'), {
+          type: 'bar',
+          data: {
+            labels: score,
+            datasets: [
+              {
+                label: 'Hóa Học',
+                data: ncount,
+                backgroundColor: '#FFA500'
+              }
+            ]
+          },
+          options: { maintainAspectRatio: false }
+        });
+      });
+  });
+
+fetch('http://localhost:8080/api/statistics/marks/Sinh', {
+  method: 'GET',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
+  }
+})
+  .then((marks) => {
+    return marks.text();
+  })
+  .then((mark) => {
+    const ruby = mark.replaceAll('.00', '');
+    const score = ruby.split(',');
+    score.shift();
+    fetch('http://localhost:8080/api/statistics/counts/Sinh', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((counts) => {
+        return counts.text();
+      })
+      .then((count) => {
+        const ncount = count.split(',');
+        ncount.shift();
+        new Chart(document.getElementById('bioChart'), {
+          type: 'bar',
+          data: {
+            labels: score,
+            datasets: [
+              {
+                label: 'Sinh Học',
+                data: ncount,
+                backgroundColor: '#FFA500'
+              }
+            ]
+          },
+          options: { maintainAspectRatio: false }
+        });
+      });
+  });
+
+fetch('http://localhost:8080/api/statistics/marks/Sử', {
+  method: 'GET',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
+  }
+})
+  .then((marks) => {
+    return marks.text();
+  })
+  .then((mark) => {
+    const ruby = mark.replaceAll('.00', '');
+    const score = ruby.split(',');
+    score.shift();
+    fetch('http://localhost:8080/api/statistics/counts/Sử', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((counts) => {
+        return counts.text();
+      })
+      .then((count) => {
+        const ncount = count.split(',');
+        ncount.shift();
+        new Chart(document.getElementById('hisChart'), {
+          type: 'bar',
+          data: {
+            labels: score,
+            datasets: [
+              {
+                label: 'Lịch Sử',
+                data: ncount,
+                backgroundColor: '#FFA500'
+              }
+            ]
+          },
+          options: { maintainAspectRatio: false }
+        });
+      });
+  });
+
+fetch('http://localhost:8080/api/statistics/marks/Địa', {
+  method: 'GET',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
+  }
+})
+  .then((marks) => {
+    return marks.text();
+  })
+  .then((mark) => {
+    const ruby = mark.replaceAll('.00', '');
+    const score = ruby.split(',');
+    score.shift();
+    fetch('http://localhost:8080/api/statistics/counts/Địa', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((counts) => {
+        return counts.text();
+      })
+      .then((count) => {
+        const ncount = count.split(',');
+        ncount.shift();
+        new Chart(document.getElementById('geoChart'), {
+          type: 'bar',
+          data: {
+            labels: score,
+            datasets: [
+              {
+                label: 'Địa Lý',
+                data: ncount,
+                backgroundColor: '#FFA500'
+              }
+            ]
+          },
+          options: { maintainAspectRatio: false }
+        });
+      });
+  });
+
+fetch('http://localhost:8080/api/statistics/marks/GDCD', {
+  method: 'GET',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
+  }
+})
+  .then((marks) => {
+    return marks.text();
+  })
+  .then((mark) => {
+    const ruby = mark.replaceAll('.00', '');
+    const score = ruby.split(',');
+    score.shift();
+    fetch('http://localhost:8080/api/statistics/counts/GDCD', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((counts) => {
+        return counts.text();
+      })
+      .then((count) => {
+        const ncount = count.split(',');
+        ncount.shift();
+        new Chart(document.getElementById('civicChart'), {
+          type: 'bar',
+          data: {
+            labels: score,
+            datasets: [
+              {
+                label: 'GDCD',
+                data: ncount,
+                backgroundColor: '#FFA500'
+              }
+            ]
+          },
+          options: { maintainAspectRatio: false }
+        });
+      });
+  });
 
 export default Statistics;
