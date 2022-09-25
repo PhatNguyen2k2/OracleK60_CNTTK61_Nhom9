@@ -15,7 +15,7 @@ function Form() {
               <p>Thí sinh nhập số báo danh và tích vào các ô dưới đây</p>
             </div>
             <div className="input-group">
-              <div>
+              <div className='input-form'>
                 <p id="msg">Vui Lòng Nhập Số Và Đủ 7 Ký Tự </p>
                 <label htmlFor="sbd">Số báo danh</label>
                 <input
@@ -158,6 +158,7 @@ function captchaHandle() {
           }
         })
         .catch((err) => console.error(err));
+        document.querySelector("#sbd").readOnly = true;
       event.preventDefault();
     }
   });

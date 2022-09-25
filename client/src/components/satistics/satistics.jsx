@@ -45,11 +45,11 @@ function Statistics() {
         <div className="barchart">
           <canvas id="mathsChart"></canvas>
         </div>
-        <h1 className="phodiem">Phổ điểm môn Văn </h1>
+        <h1 className="phodiem">Phổ điểm môn Ngữ Văn </h1>
         <div className="barchart">
           <canvas id="literChart"></canvas>
         </div>
-        <h1 className="phodiem">Phổ điểm môn Ngoại ngữ </h1>
+        <h1 className="phodiem">Phổ điểm môn Ngoại Ngữ </h1>
         <div className="barchart">
           <canvas id="engChart"></canvas>
         </div>
@@ -88,17 +88,17 @@ $(document).ready(function () {
 });
 $(document).ready(function () {
   $('#van').click(function () {
-    $('html, body').animate({ scrollTop: 940 }, 1000);
+    $('html, body').animate({ scrollTop: 990 }, 1000);
   });
 });
 $(document).ready(function () {
   $('#av').click(function () {
-    $('html, body').animate({ scrollTop: 1600 }, 1000);
+    $('html, body').animate({ scrollTop: 1650 }, 1000);
   });
 });
 $(document).ready(function () {
   $('#ly').click(function () {
-    $('html, body').animate({ scrollTop: 2300 }, 1000);
+    $('html, body').animate({ scrollTop: 2350 }, 1000);
   });
 });
 $(document).ready(function () {
@@ -123,7 +123,7 @@ $(document).ready(function () {
 });
 $(document).ready(function () {
   $('#gdcd').click(function () {
-    $('html, body').animate({ scrollTop: 5600 }, 1000);
+    $('html, body').animate({ scrollTop: 5550 }, 1000);
   });
 });
 
