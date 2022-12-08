@@ -5,11 +5,11 @@ import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.viewresult.scoreResult.model.Student;
@@ -32,6 +32,7 @@ public class StudentController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+	//Danh sách điểm từng môn học (native-query)
 	@GetMapping("/statistics/marks/{subject}")
 	public ResponseEntity<String> get_points(@PathVariable("subject") String subject){
 		String arr = studentRepository.marks(subject);
@@ -42,6 +43,7 @@ public class StudentController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+	//Số lượng theo điểm thi của từng môn học (native-query)
 	@GetMapping("/statistics/counts/{subject}")
 	public ResponseEntity<String> get_subject_points(@PathVariable("subject") String subject){
 		String arr = studentRepository.count(subject);
